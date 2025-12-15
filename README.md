@@ -16,7 +16,7 @@ We trained on the **ASVspoof 2019 Logical Access** dataset (subset) and achieved
 
 ### 1. Detection Performance
 The model distinguishes between Real and Spoofed audio with minimal False Positives.
-![Confusion Matrix](results/confusion_matrix.png)
+![Confusion Matrix](results/audio_output.png)
 
 ## How to Use
 1. Clone this repository.
