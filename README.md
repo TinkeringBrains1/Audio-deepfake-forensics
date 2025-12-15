@@ -1,25 +1,30 @@
-#  Audio Deepfake Detection: Spectral Forensics
+#  AI Audio Detection System (Deepfake Forensics)
 
-> A Convolutional Neural Network (CNN) designed to detect AI-synthesized speech by analyzing high-frequency spectral artifacts.
+> A Spectral Forensics system that detects AI-synthesized speech by analyzing high-frequency artifacts in Mel-Spectrograms.
 
+[![Open In Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](LINK_TO_YOUR_KAGGLE_NOTEBOOK_IF_PUBLIC)
 [![Python](https://img.shields.io/badge/Python-3.10-blue)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0-red)](https://pytorch.org)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-##  The Problem
-Modern TTS models (like ElevenLabs, Vall-E) generate hyper-realistic audio, but they often leave behind mathematical "scars" (artifacts) in the frequency domain that are invisible to the human ear but visible in **Mel-Spectrograms**.
+##  The Research
+Voice cloning models (like ElevenLabs, Vall-E) are becoming indistinguishable from human speech. However, they often introduce **spectral artifacts**—unnatural pixel patterns in the frequency domain—due to vocoder upsampling.
 
-##  Solution Architecture
-* **Input:** Raw Audio (.flac/.wav)
-* **Preprocessing:** Conversion to Mel-Spectrograms (128x64) using `librosa`.
-* **Model:** Custom 3-Layer CNN (`ArtifactHunter`) optimized for texture detection.
-* **Dataset:** ASVspoof 2019 (Logical Access Subset).
+This project implements a **Custom CNN (ArtifactHunter)** to detect these patterns.
 
-##  Results
-* **Accuracy:** 95% on unseen test set (subset).
-* **Key Insight:** Synthetic audio exhibits distinct "checkerboard" patterns above 4kHz due to vocoder upsampling.
+##  Key Results
+We trained on the **ASVspoof 2019 Logical Access** dataset (subset) and achieved high detection accuracy.
 
-##  How to Run
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
+### 1. Detection Performance
+The model distinguishes between Real and Spoofed audio with minimal False Positives.
+![Confusion Matrix](results/confusion_matrix.png)
+
+## How to Use
+1. Clone this repository.
+2. Install dependencies: `pip install -r requirements.txt`
+3. Open `ai-audio-detection-system.ipynb` in Jupyter Lab, VS Code, or Google Colab.
+4. Run all cells to download the sample data and train the model.
+
+##  Tech Stack
+* **Analysis:** Librosa, NumPy, Matplotlib
+* **Deep Learning:** PyTorch, CNNs
+* **Data:** ASVspoof 2019
